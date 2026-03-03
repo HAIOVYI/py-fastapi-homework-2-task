@@ -36,11 +36,11 @@ class MovieListResponseSchema(BaseModel):
 class MovieCreateSchema(BaseModel):
     name: str | None = Field(None, max_length=255)
     date: datetime.date
-    score: float = Field(gt=0, lt=100)
+    score: float = Field(ge=0, le=100)
     overview: str | None = None
     status: Literal["Released", "Post Production", "In Production"]
-    budget: float = Field(gt=0)
-    revenue: float = Field(gt=0)
+    budget: float = Field(ge=0)
+    revenue: float = Field(ge=0)
     country: str = None
     genres: List[str] = []
     actors: List[str] = []
@@ -77,8 +77,8 @@ class MovieListItemSchema(BaseModel):
 class MovieUpdateSchema(BaseModel):
     name: str | None = Field(None, max_length=255)
     date: datetime.date | None = None
-    score: float | None = Field(default=None, gt=0, lt=100)
+    score: float | None = Field(default=None, ge=0, le=100)
     overview: str | None = None
     status: Literal["Released", "Post Production", "In Production"] | None = None
-    budget: float | None = Field(default=None, gt=0)
-    revenue: float | None = Field(default=None, gt=0)
+    budget: float | None = Field(default=None, ge=0)
+    revenue: float | None = Field(default=None, ge=0)

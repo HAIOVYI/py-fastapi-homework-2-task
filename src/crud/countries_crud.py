@@ -5,7 +5,7 @@ from database.models import CountryModel
 from schemas.countries import CountryCreateSchema
 
 
-async def fetch_or_create_countries(country: str, db: AsyncSession) -> CountryModel:
+async def fetch_or_create_countries(country: str, db: AsyncSession) -> CountryModel | None:
     if not country:
         return None
 
