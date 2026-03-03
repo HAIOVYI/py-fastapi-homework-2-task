@@ -34,14 +34,14 @@ class MovieListResponseSchema(BaseModel):
 
 
 class MovieCreateSchema(BaseModel):
-    name: str | None = Field(None, max_length=255)
+    name: str = Field(max_length=255)
     date: datetime.date
     score: float = Field(ge=0, le=100)
-    overview: str | None = None
+    overview: str
     status: Literal["Released", "Post Production", "In Production"]
     budget: float = Field(ge=0)
     revenue: float = Field(ge=0)
-    country: str = None
+    country: str
     genres: List[str] = []
     actors: List[str] = []
     languages: List[str] = []
